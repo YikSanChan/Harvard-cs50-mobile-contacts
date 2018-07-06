@@ -3,13 +3,7 @@ import {Button, ScrollView, StyleSheet, Text, View} from 'react-native';
 import {Constants} from 'expo'
 
 import contacts from './contacts'
-
-const Row = props => (
-    <View>
-        <Text>{props.name}</Text>
-        <Text>{props.phone}</Text>
-    </View>
-)
+import Row from './Row'
 
 export default class App extends React.Component {
     state = {

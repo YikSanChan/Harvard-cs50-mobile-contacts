@@ -3,14 +3,12 @@ import {Button, StyleSheet, View} from 'react-native';
 import {Constants} from 'expo'
 
 export default class App extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            showContacts: false
-        }
-        this.toggleContacts = () => {
-            this.setState(prevState => ({showContacts: !prevState.showContacts}))
-        }
+    state = {
+        showContacts: false,
+    }
+
+    toggleContacts = () => {
+        this.setState(prevState => ({showContacts: !prevState.showContacts}))
     }
 
     render() {

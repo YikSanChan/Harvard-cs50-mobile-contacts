@@ -5,8 +5,7 @@ import {Constants} from 'expo'
 import contacts from './contacts'
 
 const Row = props => (
-    // Warning: `key` is not a prop
-    <View key={props.key}>
+    <View>
         <Text>{props.name}</Text>
         <Text>{props.phone}</Text>
     </View>

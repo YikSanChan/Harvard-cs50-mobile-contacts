@@ -14,17 +14,17 @@ export default class App extends React.Component {
         this.setState(prevState => ({showContacts: !prevState.showContacts}))
     }
 
-    // problems:
-    // 1. cannot scroll down. (fixed)
-    // 2. warning: child in an array should have a unique key prop. (fixed)
-    // 3. toggle doesn't work.
+    // problem: takes a long time to render all contacts.
+    // because ScrollView will render all of its children before appearing.
     render() {
         return (
             <View style={styles.container}>
                 <Button title="toggle contacts" onPress={this.toggleContacts}/>
-                <ScrollView>
-                    {contacts.map(contact => <Row {...contact} />)}
-                </ScrollView>
+                {this.state.showContacts && (
+                    <ScrollView>
+                        {contacts.map(contact => <Row {...contact} />)}
+                    </ScrollView>
+                )}
             </View>
         );
     }

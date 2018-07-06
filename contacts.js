@@ -19,11 +19,10 @@ const createContact = () => ({name: generateName(), phone: generatePhoneNumber()
 // compare two contacts for alphabetizing
 export const compareNames = (contact1, contact2) => contact1.name > contact2.name
 
-// problem: what if contact has more fields?
+// problem: what if contact has more fields? solved by ...contact!
 const addKeyToContact = (contact, key) => ({
     key: key,
-    name: contact.name,
-    phone: contact.phone,
+    ...contact,
 })
 
 // Array.from({length: 3}, createContact) => [Contact{name:name0, phone:phone0}, Contact{name:name1, phone:phone1}, Contact{name:name2, phone:phone2}]

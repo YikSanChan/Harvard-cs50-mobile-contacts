@@ -15,7 +15,7 @@ export default class App extends React.Component {
 
     // problems:
     // 1. cannot scroll down. (fixed)
-    // 2. warning: child in an array should have a unique key prop.
+    // 2. warning: child in an array should have a unique key prop. (fixed)
     // 3. toggle doesn't work.
     render() {
         return (
@@ -23,7 +23,7 @@ export default class App extends React.Component {
                 <Button title="toggle contacts" onPress={this.toggleContacts}/>
                 <ScrollView>
                     {contacts.map(contact => (
-                        <Text>{contact.name}</Text>
+                        <Text key={contact.key}>{contact.name}</Text>
                     ))}
                 </ScrollView>
             </View>

@@ -21,6 +21,8 @@ export default class App extends React.Component {
         }))
     }
 
+    // item: { name: String, phone: String, key: Number }
+    // obj => <Row name={obj.item.name} phone={obj.item.phone} />
     renderItem = (obj) => <Row {...(obj.item)} />
 
     render() {

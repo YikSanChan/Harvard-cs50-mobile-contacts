@@ -1,9 +1,8 @@
 import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {Button, StyleSheet, View} from 'react-native';
 import {Constants} from 'expo'
 
 import contacts, {compareNames} from './contacts'
-import Row from './Row'
 import ContactsList from "./ContactsList"
 
 export default class App extends React.Component {

@@ -17,15 +17,12 @@ export default class App extends React.Component {
 
     sort = () => {
         this.setState(prevState => ({
-            contacts: prevState.contacts.sort(compareNames),
+            contacts: [...prevState.contacts].sort(compareNames),
         }))
     }
 
     renderItem = (obj) => <Row {...(obj.item)} />
 
-    // problem: sort doesn't take effect as soon as button is pressed. need to toggle to see the sorted result.
-    // reason is FlatList only updates if props are changed.
-    // our prop (contacts) actually doesn't change as Array.sort() is an in-place function that returns a sorted self.
     render() {
         return (
             <View style={styles.container}>

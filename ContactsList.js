@@ -8,13 +8,17 @@ renderItem = (obj) => <Row {...(obj.item)} />
 renderSectionHeader = obj => <Text>{obj.section.title}</Text>
 
 const ContactsList = props => {
-    const contactsByLetter = props.contacts.reduce((obj, contact) => {
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+    // arr.reduce((accumulator, currentValue) => ..., initialValueToAccumulator)
+    const contactsByLetter = props.contacts.reduce((obj, contact) => { // obj is a {letter -> array of contacts} mapping
         const firstLetter = contact.name[0].toUpperCase()
         return {
-            ...obj,
+            ...obj, // copy all from obj
+            // override obj[firstLetter]
+            // || []: if obj[firstLetter] is undefined, consider it an empty array
             [firstLetter]: [...(obj[firstLetter] || []), contact],
         }
-    }, {})
+    }, {}) // {} is the initial value of accumulator, i.e., obj.
 
     const sections = Object.keys(contactsByLetter).sort().map(letter => ({
         title: letter,

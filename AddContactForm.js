@@ -1,7 +1,6 @@
 import React from 'react';
 import {Button, StyleSheet, TextInput, View} from "react-native"
 import {Constants} from "expo"
-import {PropTypes} from "prop-types"
 
 const styles = StyleSheet.create({
     input: {
@@ -15,21 +14,34 @@ const styles = StyleSheet.create({
 });
 
 export default class AddContactForm extends React.Component {
-    static propTypes = {
-        addContact: PropTypes.func,
-    }
-
     state = {
         name: '',
         phone: '',
     }
 
+    handleNameChange = name => {
+        this.setState({name})
+    }
+
+    handlePhoneChange = phone => {
+        this.setState({phone})
+    }
+
     render() {
         return (
             <View style={styles.container}>
-                <TextInput style={styles.input} value={this.state.name}/>
-                <TextInput style={styles.input} value={this.state.phone}/>
-                <Button title='Add Contact'/>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={this.handleNameChange}
+                    value={this.state.name}
+                />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={this.handlePhoneChange}
+                    value={this.state.phone}
+                    keyboardType="numeric" // problem: doesn't pop numeric keyboard
+                />
+                <Button title='Add Contact' />
             </View>
         )
     }

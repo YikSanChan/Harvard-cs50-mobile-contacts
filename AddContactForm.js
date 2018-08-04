@@ -21,21 +21,28 @@ export default class AddContactForm extends React.Component {
     }
 
     handleNameChange = name => {
-        this.setState({name})
+        this.setState({name}, this.validateForm)
     }
 
     handlePhoneChange = phone => {
         if (+phone >= 0 && phone.length <= 10) { // +"123" -> 123, +"123a" -> NaN; ensure phone is a numeric string
-            this.setState({phone})
+            this.setState({phone}, this.validateForm)
         }
     }
 
-    handleSubmit = () => {
+    validateForm = () => {
         if (+this.state.phone >= 0 && this.state.phone.length === 10 && this.state.name.length >= 3) {
-            // == this.props.onSubmit({name: this.state.name, phone: this.state.phone})
-            // == this.props.onSubmit({...this.state})
-            this.props.onSubmit(this.state)
+            return this.setState({isFormValid: true})
+        } else {
+            return this.setState({isFormValid: false})
         }
+    }
+
+
+    handleSubmit = () => {
+        // == this.props.onSubmit({name: this.state.name, phone: this.state.phone})
+        // == this.props.onSubmit({...this.state})
+        this.props.onSubmit(this.state)
     }
 
     render() {

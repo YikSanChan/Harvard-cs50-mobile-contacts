@@ -27,6 +27,12 @@ export default class AddContactForm extends React.Component {
         this.setState({phone})
     }
 
+    handleSubmit = () => {
+        // == this.props.onSubmit({name: this.state.name, phone: this.state.phone})
+        // == this.props.onSubmit({...this.state})
+        this.props.onSubmit(this.state)
+    }
+
     render() {
         return (
             <View style={styles.container}>
@@ -34,14 +40,16 @@ export default class AddContactForm extends React.Component {
                     style={styles.input}
                     onChangeText={this.handleNameChange}
                     value={this.state.name}
+                    placeholder="Name"
                 />
                 <TextInput
                     style={styles.input}
                     onChangeText={this.handlePhoneChange}
                     value={this.state.phone}
+                    placeholder="Phone"
                     keyboardType="numeric" // problem: doesn't pop numeric keyboard
                 />
-                <Button title='Add Contact' />
+                <Button title='Submit' onPress={this.handleSubmit}/>
             </View>
         )
     }

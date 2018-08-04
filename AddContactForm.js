@@ -24,7 +24,9 @@ export default class AddContactForm extends React.Component {
     }
 
     handlePhoneChange = phone => {
-        this.setState({phone})
+        if (+phone >= 0) { // +"123" -> 123, +"123a" -> NaN; ensure phone is a numeric string
+            this.setState({phone})
+        }
     }
 
     handleSubmit = () => {

@@ -17,6 +17,7 @@ export default class AddContactForm extends React.Component {
     state = {
         name: '',
         phone: '',
+        isFormValid: false,
     }
 
     handleNameChange = name => {
@@ -53,7 +54,7 @@ export default class AddContactForm extends React.Component {
                     placeholder="Phone"
                     keyboardType="numeric" // problem: doesn't pop numeric keyboard
                 />
-                <Button title='Submit' onPress={this.handleSubmit}/>
+                <Button title='Submit' onPress={this.handleSubmit} disabled={!this.state.isFormValid}/>
             </View>
         )
     }

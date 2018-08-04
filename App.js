@@ -14,7 +14,7 @@ export default class App extends React.Component {
     }
 
     addContact = newContact => {
-        this.setState(prevState => ({contacts: [...prevState.contacts, newContact]}))
+        this.setState(prevState => ({showForm: false, contacts: [...prevState.contacts, newContact]}))
     }
 
     toggleContacts = () => {

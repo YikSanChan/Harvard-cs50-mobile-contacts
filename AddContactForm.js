@@ -30,9 +30,11 @@ export default class AddContactForm extends React.Component {
     }
 
     handleSubmit = () => {
-        // == this.props.onSubmit({name: this.state.name, phone: this.state.phone})
-        // == this.props.onSubmit({...this.state})
-        this.props.onSubmit(this.state)
+        if (+this.state.phone >= 0 && this.state.phone.length === 10 && this.state.name.length >= 3) {
+            // == this.props.onSubmit({name: this.state.name, phone: this.state.phone})
+            // == this.props.onSubmit({...this.state})
+            this.props.onSubmit(this.state)
+        }
     }
 
     render() {

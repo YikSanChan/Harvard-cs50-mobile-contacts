@@ -20,13 +20,10 @@ export default class AddContactForm extends React.Component {
         isFormValid: false,
     }
 
-    // problematic
-    // 1. when name is typed in, component is updated
-    // 2. validateForm() is called
-    // 3. setState, component is updated again
-    // 4. repeat 2-4.
     componentDidUpdate(prevProps, prevState) {
-        this.validateForm()
+        if (this.state.name !== prevState.name || this.state.phone !== prevState.phone) {
+            this.validateForm()
+        }
     }
 
     handleNameChange = name => {

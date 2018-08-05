@@ -9,7 +9,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
     },
     container: {
+        flex: 1,
         paddingTop: Constants.statusBarHeight,
+        justifyContent: 'center',
     }
 });
 
@@ -66,6 +68,48 @@ export default class AddContactForm extends React.Component {
                     value={this.state.phone}
                     placeholder="Phone"
                     keyboardType="numeric" // problem: doesn't pop numeric keyboard
+                />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={this.handleNameChange}
+                    value={this.state.name}
+                    placeholder="Name"
+                />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={this.handleNameChange}
+                    value={this.state.name}
+                    placeholder="Name"
+                />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={this.handleNameChange}
+                    value={this.state.name}
+                    placeholder="Name"
+                />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={this.handleNameChange}
+                    value={this.state.name}
+                    placeholder="Name"
+                />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={this.handleNameChange}
+                    value={this.state.name}
+                    placeholder="Name"
+                />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={this.handleNameChange}
+                    value={this.state.name}
+                    placeholder="Name"
+                />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={this.handleNameChange}
+                    value={this.state.name}
+                    placeholder="Name"
                 />
                 <Button title='Submit' onPress={this.handleSubmit} disabled={!this.state.isFormValid}/>
             </View>

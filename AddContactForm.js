@@ -67,7 +67,7 @@ export default class AddContactForm extends React.Component {
                     onChangeText={this.handlePhoneChange}
                     value={this.state.phone}
                     placeholder="Phone"
-                    keyboardType="numeric" // problem: doesn't pop numeric keyboard
+                    keyboardType="numeric" // to pop up keyboard, press cmd + k
                 />
                 <TextInput
                     style={styles.input}

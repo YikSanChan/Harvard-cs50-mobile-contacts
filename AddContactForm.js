@@ -33,7 +33,9 @@ export default class AddContactForm extends React.Component {
     }
 
     validateForm = () => {
-        if (+this.state.phone >= 0 && this.state.phone.length === 10 && this.state.name.length >= 3) {
+        // want to add a rule that a name should have first and last name
+        const names = this.state.name.split(' ') // "Evan " => ["Evan", ""], which should not be valid
+        if (+this.state.phone >= 0 && this.state.phone.length === 10 && this.state.name.length >= 3 && names.length >= 2) {
             return this.setState({isFormValid: true})
         } else {
             return this.setState({isFormValid: false})

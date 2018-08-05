@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, StyleSheet, TextInput, KeyboardAvoidingView, View} from "react-native"
+import {Button, StyleSheet, TextInput, KeyboardAvoidingView} from "react-native"
 import {Constants} from "expo"
 
 const styles = StyleSheet.create({
@@ -28,14 +28,8 @@ export default class AddContactForm extends React.Component {
         }
     }
 
-    handleNameChange = name => {
-        this.setState({name})
-    }
-
-    handlePhoneChange = phone => {
-        if (+phone >= 0 && phone.length <= 10) { // +"123" -> 123, +"123a" -> NaN; ensure phone is a numeric string
-            this.setState({phone})
-        }
+    getHandler = key => val => {
+        this.setState({[key]: val})
     }
 
     validateForm = () => {
@@ -58,58 +52,16 @@ export default class AddContactForm extends React.Component {
             <KeyboardAvoidingView behavior="padding" style={styles.container}>
                 <TextInput
                     style={styles.input}
-                    onChangeText={this.handleNameChange}
+                    onChangeText={this.getHandler('name')}
                     value={this.state.name}
                     placeholder="Name"
                 />
                 <TextInput
                     style={styles.input}
-                    onChangeText={this.handlePhoneChange}
+                    onChangeText={this.getHandler('phone')}
                     value={this.state.phone}
                     placeholder="Phone"
                     keyboardType="numeric" // to pop up keyboard, press cmd + k
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={this.handleNameChange}
-                    value={this.state.name}
-                    placeholder="Name"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={this.handleNameChange}
-                    value={this.state.name}
-                    placeholder="Name"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={this.handleNameChange}
-                    value={this.state.name}
-                    placeholder="Name"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={this.handleNameChange}
-                    value={this.state.name}
-                    placeholder="Name"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={this.handleNameChange}
-                    value={this.state.name}
-                    placeholder="Name"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={this.handleNameChange}
-                    value={this.state.name}
-                    placeholder="Name"
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={this.handleNameChange}
-                    value={this.state.name}
-                    placeholder="Name"
                 />
                 <Button title='Submit' onPress={this.handleSubmit} disabled={!this.state.isFormValid}/>
             </KeyboardAvoidingView>

@@ -3,8 +3,9 @@
   "private": true,
   "dependencies": {
     "expo": "^28.0.0",
+    "prop-types": "latest",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-28.0.0.tar.gz",
-    "prop-types": "latest"
+    "react-navigation": "^2.0.0-beta.3"
   }
 }

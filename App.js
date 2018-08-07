@@ -1,15 +1,16 @@
 import React from 'react';
 
 import contacts from './contacts'
-import {createSwitchNavigator} from 'react-navigation'
+import {createStackNavigator} from 'react-navigation'
 import AddContactScreen from "./screens/AddContactScreen"
 import ContactListScreen from "./screens/ContactListScreen"
 
+
 /**
- * When we switch from one screen to another, we unmount the screen that we switch away from.
- * It is now no longer rendered, no longer in memory.
+ * In Stack Navigator, we keep all these routes and previous screens mounted in memory.
+ * Because we need to show the screen immediately when we swipe back.
  */
-const AppNavigator = createSwitchNavigator({
+const AppNavigator = createStackNavigator({
     AddContact: AddContactScreen,
     ContactList: ContactListScreen
 }, {

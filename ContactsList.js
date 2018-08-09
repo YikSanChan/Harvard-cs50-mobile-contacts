@@ -3,11 +3,12 @@ import {SectionList, Text} from "react-native"
 import {PropTypes} from "prop-types"
 import Row from "./Row"
 
-renderItem = (obj) => <Row {...(obj.item)} />
-
-renderSectionHeader = obj => <Text>{obj.section.title}</Text>
+const renderSectionHeader = obj => <Text>{obj.section.title}</Text>
 
 const ContactsList = props => {
+
+    const renderItem = (obj) => <Row {...(obj.item)} onSelectContact={props.onSelectContact}/>
+
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
     // arr.reduce((accumulator, currentValue) => ..., initialValueToAccumulator)
     const contactsByLetter = props.contacts.reduce((obj, contact) => { // obj is a {letter -> array of contacts} mapping

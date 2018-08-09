@@ -4,7 +4,7 @@ import contacts from './contacts'
 import {createStackNavigator} from 'react-navigation'
 import AddContactScreen from "./screens/AddContactScreen"
 import ContactListScreen from "./screens/ContactListScreen"
-
+import ContactDetailsScreen from "./screens/ContactDetailsScreen"
 
 /**
  * In Stack Navigator, we keep all these routes and previous screens mounted in memory.
@@ -12,7 +12,8 @@ import ContactListScreen from "./screens/ContactListScreen"
  */
 const AppNavigator = createStackNavigator({
     AddContact: AddContactScreen,
-    ContactList: ContactListScreen
+    ContactList: ContactListScreen,
+    ContactDetails: ContactDetailsScreen,
 }, {
     initialRouteName: 'ContactList'
 })

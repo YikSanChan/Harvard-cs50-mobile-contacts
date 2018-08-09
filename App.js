@@ -1,22 +1,32 @@
 import React from 'react';
 
 import contacts from './contacts'
-import {createStackNavigator, createSwitchNavigator} from 'react-navigation'
+import {
+    createBottomTabNavigator,
+    createStackNavigator,
+    createSwitchNavigator
+} from 'react-navigation'
 import AddContactScreen from "./screens/AddContactScreen"
 import ContactListScreen from "./screens/ContactListScreen"
 import ContactDetailsScreen from "./screens/ContactDetailsScreen"
 import LoginScreen from "./screens/LoginScreen"
+import SettingsScreen from "./screens/SettingsScreen"
 
 /**
  * In Stack Navigator, we keep all these routes and previous screens mounted in memory.
  * Because we need to show the screen immediately when we swipe back.
  */
-const MainNavigator = createStackNavigator({
+const ContactsTab = createStackNavigator({
     AddContact: AddContactScreen,
     ContactList: ContactListScreen,
     ContactDetails: ContactDetailsScreen,
 }, {
     initialRouteName: 'ContactList',
+})
+
+const MainNavigator = createBottomTabNavigator({
+    Contacts: ContactsTab,
+    Settings: SettingsScreen,
 })
 
 /**

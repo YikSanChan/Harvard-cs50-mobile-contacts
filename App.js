@@ -11,6 +11,7 @@ import ContactListScreen from "./screens/ContactListScreen"
 import ContactDetailsScreen from "./screens/ContactDetailsScreen"
 import LoginScreen from "./screens/LoginScreen"
 import SettingsScreen from "./screens/SettingsScreen"
+import {Ionicons} from 'react-native-vector-icons'
 
 /**
  * In Stack Navigator, we keep all these routes and previous screens mounted in memory.
@@ -23,6 +24,16 @@ const ContactsTab = createStackNavigator({
 }, {
     initialRouteName: 'ContactList',
 })
+
+ContactsTab.navigationOptions = {
+    tabBarIcon: ({focused, tintColor}) => (
+        <Ionicons
+            name={`ios-contacts${focused ? "" : "-outline"}`}
+            size={25}
+            color={tintColor}
+        />
+    )
+};
 
 const MainNavigator = createBottomTabNavigator({
     Contacts: ContactsTab,

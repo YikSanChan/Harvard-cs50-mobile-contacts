@@ -23,7 +23,7 @@ export default class ContactListScreen extends React.Component {
                     <ContactsList
                         contacts={this.props.screenProps.contacts}
                         onSelectContact={(contact) => {
-                            this.props.navigation.navigate('ContactDetails')
+                            this.props.navigation.navigate('ContactDetails', {phone: contact.phone, name: contact.name})
                         }}
                     />
                 )}

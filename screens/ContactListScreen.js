@@ -4,23 +4,21 @@ import ContactsList from '../ContactsList';
 import {Constants} from "expo"
 
 export default class ContactListScreen extends React.Component {
+    static navigationOptions = ({navigation}) => ({
+        headerTitle: 'Contacts',
+        headerRight: <Button title="Add" onPress={() => {
+            navigation.navigate('AddContact')
+        }
+        }/>
+    })
+
     state = {
         showContacts: true,
     };
 
-    toggleContacts = () => {
-        this.setState(prevState => ({showContacts: !prevState.showContacts}));
-    };
-
-    showForm = () => {
-        this.props.navigation.navigate('AddContact')
-    }
-
     render() {
         return (
             <View style={styles.container}>
-                <Button title="add contact" onPress={this.showForm}/>
-                <Button title="toggle contacts" onPress={this.toggleContacts}/>
                 {this.state.showContacts && (
                     <ContactsList
                         contacts={this.props.screenProps.contacts}

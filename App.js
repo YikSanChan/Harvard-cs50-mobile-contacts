@@ -11,6 +11,7 @@ import ContactDetailsScreen from "./screens/ContactDetailsScreen"
 import LoginScreen from "./screens/LoginScreen"
 import SettingsScreen from "./screens/SettingsScreen"
 import {Ionicons} from 'react-native-vector-icons'
+import {fetchUsers} from "./api"
 
 /**
  * In Stack Navigator, we keep all these routes and previous screens mounted in memory.
@@ -55,14 +56,11 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchUsers()
+        this.getUsers()
     }
 
-    // problem: what we get doesn't have a text name. name is an Object.
-    fetchUsers = async () => {
-        const response = await fetch('https://randomuser.me/api/?results=50&nat=us')
-        const {results} = await response.json()
-        console.log(results)
+    getUsers = async () => {
+        const results = await fetchUsers()
         this.setState({contacts: results})
     }
 

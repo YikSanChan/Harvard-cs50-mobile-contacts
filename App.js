@@ -54,11 +54,16 @@ export default class App extends React.Component {
         contacts: null,
     }
 
-    // problem: what we get doesn't have a text name. name is an Object.
     componentDidMount() {
-        fetch('https://randomuser.me/api/?results=50&nat=us')
-            .then(response => response.json())
-            .then(({results}) => this.setState({contacts: results}))
+        this.fetchUsers()
+    }
+
+    // problem: what we get doesn't have a text name. name is an Object.
+    fetchUsers = async () => {
+        const response = await fetch('https://randomuser.me/api/?results=50&nat=us')
+        const {results} = await response.json()
+        console.log(results)
+        this.setState({contacts: results})
     }
 
     addContact = newContact => {

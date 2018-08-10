@@ -58,7 +58,7 @@ export default class App extends React.Component {
     componentDidMount() {
         fetch('https://randomuser.me/api/?results=50&nat=us')
             .then(response => response.json())
-            .then(results => this.setState({contacts: results.results}))
+            .then(({results}) => this.setState({contacts: results}))
     }
 
     addContact = newContact => {

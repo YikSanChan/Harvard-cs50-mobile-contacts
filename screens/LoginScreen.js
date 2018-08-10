@@ -1,5 +1,6 @@
 import React from "react";
 import {Button, View, StyleSheet, Text, TextInput} from "react-native";
+import {userLogin} from "../api"
 
 export default class LoginScreen extends React.Component {
     state = {
@@ -8,20 +9,13 @@ export default class LoginScreen extends React.Component {
     }
 
     login = async () => {
-        // auth server that allows only 1 user with {username="username", password="password"}
-        const response = await fetch('http://localhost:8000', {
-            method: 'POST',
-            headers: {'content-type': 'application/json'},
-            body: JSON.stringify({username: this.state.username, password: this.state.password}),
-        })
-        console.log(response)
-        if (response.ok) {
-            this.props.navigation.navigate("Main")
-            return
+        try {
+            await userLogin(this.state.username, this.state.password)
+            this.props.navigation.navigate('Main')
+        } catch (err) {
+            const errMessage = err.message
+            this.setState({err: errMessage})
         }
-        const errMessage = await response.text()
-        console.log(errMessage)
-        this.setState({err: errMessage})
     };
 
     handleUsernameUpdate = username => {

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import contacts from './contacts'
 import {
     createBottomTabNavigator,
     createStackNavigator,
@@ -52,8 +51,14 @@ const AppNavigator = createSwitchNavigator({
 
 export default class App extends React.Component {
     state = {
-        showContacts: false,
-        contacts: contacts,
+        contacts: null,
+    }
+
+    // problem: what we get doesn't have a text name. name is an Object.
+    componentDidMount() {
+        fetch('https://randomuser.me/api/?results=50&nat=us')
+            .then(response => response.json())
+            .then(results => this.setState({contacts: results.results}))
     }
 
     addContact = newContact => {

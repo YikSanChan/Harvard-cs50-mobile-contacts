@@ -40,11 +40,13 @@ export default class LoginScreen extends React.Component {
                     placeholder="username"
                     value={this.state.username}
                     onChangeText={this.handleUsernameUpdate}
+                    autoCapitalize="none"
                 />
                 <TextInput
                     placeholder="password"
                     value={this.state.password}
                     onChangeText={this.handlePasswordUpdate}
+                    secureTextEntry
                 />
                 <Text style={styles.text}>You are currently logged out.</Text>
                 <Button title="Press to Log In" onPress={this.login}/>

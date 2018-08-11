@@ -1,3 +1,5 @@
+const fetch = require('isomorphic-fetch')
+
 // action types
 const UPDATE_USER = 'UPDATE_USER'
 const UPDATE_CONTACT = 'UPDATE_CONTACT'

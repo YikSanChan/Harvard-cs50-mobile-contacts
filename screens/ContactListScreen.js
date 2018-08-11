@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, View, StyleSheet} from 'react-native';
 import ContactsList from '../ContactsList';
 import {Constants} from "expo"
+import store from '../redux/store'
 
 export default class ContactListScreen extends React.Component {
     static navigationOptions = ({navigation}) => ({
@@ -17,11 +18,12 @@ export default class ContactListScreen extends React.Component {
     };
 
     render() {
+        const contacts = store.getState().contacts
         return (
             <View style={styles.container}>
                 {this.state.showContacts && (
                     <ContactsList
-                        contacts={this.props.screenProps.contacts}
+                        contacts={contacts}
                         onSelectContact={(contact) => {
                             this.props.navigation.navigate('ContactDetails', {phone: contact.phone, name: contact.name})
                         }}

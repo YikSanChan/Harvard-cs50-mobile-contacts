@@ -66,10 +66,6 @@ export default class App extends React.Component {
         this.setState({contacts: results})
     }
 
-    addContact = newContact => {
-        this.setState(prevState => ({contacts: [...prevState.contacts, newContact]}))
-    }
-
     render() {
         return (
             // Provider: let the app knows about the store

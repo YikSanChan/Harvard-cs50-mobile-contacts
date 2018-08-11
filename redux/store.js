@@ -1,21 +1,9 @@
+// import {createStore} from 'redux'
+const {createStore} = require('redux')
+
 // action types
 const UPDATE_USER = 'UPDATE_USER'
 const UPDATE_CONTACT = 'UPDATE_CONTACT'
-
-class Store {
-    constructor(reducer, initialState) {
-        this.reducer = reducer
-        this.state = initialState
-    }
-
-    getState() {
-        return this.state
-    }
-
-    dispatch(update) {
-        this.state = this.reducer(this.state, update)
-    }
-}
 
 const DEFAULT_STATE = {user: {}, contacts: []}
 
@@ -51,7 +39,7 @@ const addContact = contact => ({
     payload: contact
 })
 
-const store = new Store(reducer, DEFAULT_STATE)
+const store = createStore(reducer, DEFAULT_STATE)
 store.dispatch(updateUser({foo: 'foo'}))
 store.dispatch(updateUser({bar: 'bar'}))
 store.dispatch(updateUser({foo: 'baz'}))

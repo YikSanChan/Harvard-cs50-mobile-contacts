@@ -21,27 +21,25 @@ const DEFAULT_STATE = {user: {}, contacts: []}
 
 const merge = (prev, next) => Object.assign({}, prev, next)
 
-const contactReducer = (state, newContact) => [...state, newContact]
-
-const userReducer = (state, update) => merge(state, update)
-
-const reducer = (state, action) => {
-    if (action.type === UPDATE_USER) {
-        return merge(
-            state,
-            {user: userReducer(state.user, action.payload)}
-        )
-    }
-
+const contactReducer = (state, action) => {
     if (action.type === UPDATE_CONTACT) {
-        return merge(
-            state,
-            {contacts: contactReducer(state.contacts, action.payload)}
-        )
+        return [...state, action.payload]
     }
-
     return state
 }
+
+const userReducer = (state, action) => {
+    if (action.type === UPDATE_USER) {
+        return merge(state, action.payload)
+    }
+    return state
+}
+
+const reducer = (state, action) => ({
+    user: userReducer(state.user, action),
+    contacts: contactReducer(state.contacts, action),
+})
+
 // action creators
 const updateUser = update => ({
     type: UPDATE_USER,

@@ -47,5 +47,6 @@ const mapStateToProps = state => ({
 
 // the component will subscribe to Redux store updates.
 // This means that any time the store is updated, mapStateToProps will be called
-// The results of mapStateToProps will be merged into the component’s props.
+// The results of mapStateToProps will be merged into the component’s props,
+// and will be used by contacts={this.props.contacts}
 export default connect(mapStateToProps)(ContactListScreen)

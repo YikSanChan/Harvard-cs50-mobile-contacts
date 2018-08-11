@@ -12,6 +12,8 @@ import LoginScreen from "./screens/LoginScreen"
 import SettingsScreen from "./screens/SettingsScreen"
 import {Ionicons} from 'react-native-vector-icons'
 import {fetchUsers} from "./api"
+import {Provider} from 'react-redux'
+import store from "./redux/store"
 
 /**
  * In Stack Navigator, we keep all these routes and previous screens mounted in memory.
@@ -69,7 +71,12 @@ export default class App extends React.Component {
     }
 
     render() {
-        return <AppNavigator />
+        return (
+            // Provider: let the app knows about the store
+            <Provider store={store}>
+                <AppNavigator/>
+            </Provider>
+        )
     }
 }
 

@@ -2,9 +2,9 @@ import React from 'react';
 import {Button, View, StyleSheet} from 'react-native';
 import ContactsList from '../ContactsList';
 import {Constants} from "expo"
-import store from '../redux/store'
+import {connect} from 'react-redux'
 
-export default class ContactListScreen extends React.Component {
+class ContactListScreen extends React.Component {
     static navigationOptions = ({navigation}) => ({
         headerTitle: 'Contacts',
         headerRight: <Button title="Add" onPress={() => {
@@ -18,12 +18,11 @@ export default class ContactListScreen extends React.Component {
     };
 
     render() {
-        const contacts = store.getState().contacts
         return (
             <View style={styles.container}>
                 {this.state.showContacts && (
                     <ContactsList
-                        contacts={contacts}
+                        contacts={this.props.contacts}
                         onSelectContact={(contact) => {
                             this.props.navigation.navigate('ContactDetails', {phone: contact.phone, name: contact.name})
                         }}
@@ -41,3 +40,12 @@ const styles = StyleSheet.create({
         paddingTop: Constants.statusBarHeight,
     },
 });
+
+const mapStateToProps = state => ({
+    contacts: state.contacts,
+})
+
+// the component will subscribe to Redux store updates.
+// This means that any time the store is updated, mapStateToProps will be called
+// The results of mapStateToProps will be merged into the component’s props.
+export default connect(mapStateToProps)(ContactListScreen)
